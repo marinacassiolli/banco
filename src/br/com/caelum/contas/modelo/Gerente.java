@@ -1,17 +1,16 @@
 package br.com.caelum.contas.modelo;
 
-public class Gerente extends Funcionario {
+public class Gerente extends Funcionario implements Autenticavel {
 
 	private int senha, numeroDeFuncionariosGerenciados;
 	
 	public boolean autentica(int senha) {
-		if (this.senha == senha) {
+		if (this.senha != senha) {
 			System.out.println("Acesso permitido!");
 			return true;
-		} else {
-			System.out.println("Acesso negado!");
-			return false;
 		}
+		System.out.println("Acesso negado!");
+		return false;
 	}
 
 	// Reescrita do método abstrato da classe mãe "Funcionario"
