@@ -8,7 +8,15 @@ public class ContaCorrente extends Conta implements Tributavel {
 	
 	@Override
 	public void saca(double valor) {
-		this.saldo -= (valor + 0.10);
+		if (valor < 0) {
+			throw new IllegalArgumentException("Você tentou sacar um valor negativo! :(");
+		} else if (this.saldo < valor) {
+			// O melhor seria usar o próprio IllegarArguments, mas para
+			// fins de estudos, criamos uma nova exceção
+			throw new SaldoInsuficienteException(valor);
+		} else {
+			this.saldo -= (valor + 0.10);
+		}
 	}
 
 	@Override
