@@ -70,4 +70,23 @@ public abstract class Conta {
 		this.saldo -= valor;
 		destino.saldo += valor;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "[titular=" + titular.toUpperCase() +
+				" , numero=" + numero +
+				", agencia=" + agencia + "]";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if (obj == null) return false;
+
+		Conta conta = (Conta) obj;
+		
+		return this.numero == conta.numero &&
+				this.agencia.equals(conta.agencia);
+	}
 }
